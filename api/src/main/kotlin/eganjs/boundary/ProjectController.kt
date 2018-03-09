@@ -1,15 +1,14 @@
 package eganjs.boundary
 
-import eganjs.control.service.ProjectService
 import eganjs.entity.Project
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.http.HttpStatus
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("project")
-class ProjectController @Autowired constructor(
-        projectService: ProjectService
-) : EntityController<Project>(
-        projectService
-)
+class ProjectController : EntityController<Project>() {
+    @PostMapping
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CREATED)
+    fun create(@RequestBody entity: Project): Project = entityService.create(entity)
+}

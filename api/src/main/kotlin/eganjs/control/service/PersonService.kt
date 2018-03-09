@@ -1,11 +1,7 @@
 package eganjs.control.service
 
-import eganjs.control.repository.PersonRepository
 import eganjs.entity.Person
-import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 
-class PersonService @Autowired constructor(
-        personRepository: PersonRepository
-) : EntityService<Person>(
-        personRepository
-)
+@Service
+class PersonService : EntityService<Person>()
