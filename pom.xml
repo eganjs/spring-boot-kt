@@ -20,8 +20,6 @@
     </parent>
 
     <properties>
-        <main.class>eganjs.generator.RandomPasswordKt</main.class>
-
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <kotlin.version>1.2.30</kotlin.version>
