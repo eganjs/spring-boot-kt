@@ -1,6 +1,6 @@
-package eganjs.control.service
+package eganjs.control.service.simple
 
-import eganjs.control.extension.safeFindById
+import eganjs.control.extension.orElseThrowNotFound
 import eganjs.entity.Identifiable
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.jpa.repository.JpaRepository
@@ -14,7 +14,7 @@ abstract class EntityService<T : Identifiable> {
 
     fun readAll(): Collection<T> = repository.findAll()
 
-    fun readById(id: UUID): T = repository.safeFindById(id)
+    fun readById(id: UUID): T = repository.findById(id).orElseThrowNotFound()
 
     fun update(entity: T): T = repository.saveAndFlush(entity)
 }

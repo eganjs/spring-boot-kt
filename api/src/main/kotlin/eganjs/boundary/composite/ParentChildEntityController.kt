@@ -1,6 +1,6 @@
-package eganjs.boundary
+package eganjs.boundary.composite
 
-import eganjs.control.service.ParentChildEntityService
+import eganjs.control.service.composite.ParentChildEntityService
 import eganjs.entity.Identifiable
 import eganjs.entity.ParentIdentifiable
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,17 +11,17 @@ import java.util.*
 
 abstract class ParentChildEntityController<P : ParentIdentifiable<C>, C : Identifiable> {
     @Autowired
-    protected lateinit var parentChildChildEntityService: ParentChildEntityService<P, C>
+    protected lateinit var parentChildEntityService: ParentChildEntityService<P, C>
 
-    @PostMapping("{id}")
+    @PostMapping
     @ResponseBody
     @ResponseStatus(CREATED)
     fun createChild(@PathVariable id: UUID, @RequestBody entity: C): C =
-            parentChildChildEntityService.createChildOnParent(id, entity)
+            parentChildEntityService.createChildOnParent(id, entity)
 
-    @GetMapping("{id}")
+    @GetMapping
     @ResponseBody
     @ResponseStatus(OK)
     fun readChildrenByParentId(@PathVariable id: UUID): Collection<C> =
-            parentChildChildEntityService.readChildrenOnParent(id)
+            parentChildEntityService.readChildrenOnParent(id)
 }

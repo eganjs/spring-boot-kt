@@ -1,11 +1,11 @@
-package eganjs.boundary
+package eganjs.boundary.simple
 
-import eganjs.control.service.EntityService
+import eganjs.control.service.simple.EntityService
 import eganjs.entity.Identifiable
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus.OK
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.ResponseStatus
 import java.util.*
@@ -22,5 +22,5 @@ abstract class EntityController<T : Identifiable> {
     @GetMapping("{id}")
     @ResponseBody
     @ResponseStatus(OK)
-    fun readById(@RequestParam id: UUID): T = entityService.readById(id)
+    fun readById(@PathVariable id: UUID): T = entityService.readById(id)
 }

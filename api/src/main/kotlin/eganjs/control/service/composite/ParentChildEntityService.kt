@@ -1,5 +1,6 @@
-package eganjs.control.service
+package eganjs.control.service.composite
 
+import eganjs.control.service.simple.EntityService
 import eganjs.entity.Identifiable
 import eganjs.entity.ParentIdentifiable
 import org.springframework.beans.factory.annotation.Autowired

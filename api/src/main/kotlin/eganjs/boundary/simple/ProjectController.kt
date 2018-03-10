@@ -1,4 +1,4 @@
-package eganjs.boundary
+package eganjs.boundary.simple
 
 import eganjs.entity.Project
 import org.springframework.http.HttpStatus

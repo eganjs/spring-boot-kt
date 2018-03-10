@@ -1,4 +1,4 @@
-package eganjs.control.service
+package eganjs.control.service.composite
 
 import eganjs.entity.Project
 import eganjs.entity.Team
